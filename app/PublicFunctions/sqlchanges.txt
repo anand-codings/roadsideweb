@@ -1,0 +1,9 @@
+ALTER TABLE `subscriptions` ADD `miles_covered` FLOAT NULL AFTER `quantity`;
+ALTER TABLE `subscriptions` ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+ALTER TABLE `payments` ADD CONSTRAINT `p_user_id` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE RESTRICT;
+ALTER TABLE `subscriptions` ADD `status` TINYINT(1) NOT NULL DEFAULT '0' AFTER `ends_at`;	
+ALTER TABLE `subscriptions` ADD `counter` INT(11) NOT NULL DEFAULT '0' AFTER `status`;
+ALTER TABLE `admins` ADD `profile_pic` VARCHAR(191) NULL AFTER `password`;
+ALTER TABLE `users` ADD `affiliate_id` VARCHAR(255) NOT NULL AFTER `id`;
+ALTER TABLE `subscriptions` CHANGE `ends_at` `ends_at` DATETIME NULL DEFAULT NULL;
+ALTER TABLE `subscriptions` CHANGE `ends_at` `ends_at` VARCHAR(255) NULL DEFAULT NULL;
